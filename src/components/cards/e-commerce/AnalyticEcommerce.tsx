@@ -1,21 +1,16 @@
-import { Box, Chip, ChipProps, Grid, Stack, Typography } from "@mui/material";
+import { Box, Chip, ChipProps, Grid, Stack, Typography } from '@mui/material';
+import { RiseOutlined, FallOutlined } from '@ant-design/icons';
 
 interface Props {
   title: string;
   count: string;
   percentage?: number;
   isLoss?: boolean;
-  color?: ChipProps["color"];
+  color?: ChipProps['color'];
   extra: string;
 }
 
-const AnalyticEcommerce = ({
-  color = "primary",
-  title,
-  count,
-  percentage,
-  extra,
-}: Props) => {
+const AnalyticEcommerce = ({ color = 'primary', title, count, percentage, isLoss, extra }: Props) => {
   return (
     <>
       <Box sx={{ p: 2.25 }}>
@@ -34,7 +29,14 @@ const AnalyticEcommerce = ({
                 <Chip
                   variant="outlined"
                   color={color}
+                  icon={
+                    <>
+                      {!isLoss && <RiseOutlined style={{ fontSize: '0.75rem', color: 'inherit' }} />}
+                      {isLoss && <FallOutlined style={{ fontSize: '0.75rem', color: 'inherit' }} />}
+                    </>
+                  }
                   label={`${percentage}`}
+                  sx={{ ml: 1.25, pl: 1 }}
                   size="small"
                 />
               </Grid>
@@ -53,3 +55,5 @@ export default AnalyticEcommerce;
 // Chip의 variant 가 템플릿에 나온것과 무조건 일치하지 않는다!
 // 공식문서에서는 오직 'outlined'만 허용하는데 템플릿 코드는 'combined' 라고
 // 되어있어서 혼란이 발생했다!
+// * 템플릿에 있는 코드를 무조건 신뢰하지말고 안되면 공식문서 API 참고할것!
+//? isLoss의 출저를 알수 없다. 어디에서 주는지 모르겠ㄷ다.
