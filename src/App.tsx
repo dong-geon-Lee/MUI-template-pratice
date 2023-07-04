@@ -1,10 +1,11 @@
 import React from "react";
+import DashboardDefault from "./pages/dashboard/default";
 
 const App = () => {
   return (
-    <div className="App">
-      <h1>Hello World</h1>
-    </div>
+    <>
+      <DashboardDefault />
+    </>
   );
 };
 
