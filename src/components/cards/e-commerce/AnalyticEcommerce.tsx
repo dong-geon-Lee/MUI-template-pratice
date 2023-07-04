@@ -27,7 +27,7 @@ const AnalyticEcommerce = ({ color = 'primary', title, count, percentage, isLoss
           {percentage && (
             <Grid item>
               <Chip
-                variant="outlined"
+                variant="filled"
                 color={color}
                 icon={
                   <>
