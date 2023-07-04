@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState } from 'react';
 import {
   Avatar,
   AvatarGroup,
@@ -13,13 +13,13 @@ import {
   MenuItem,
   Stack,
   TextField,
-  Typography,
-} from "@mui/material";
-import AnalyticEcommerce from "../../components/cards/e-commerce/AnalyticEcommerce";
+  Typography
+} from '@mui/material';
+import AnalyticEcommerce from '../../components/cards/e-commerce/AnalyticEcommerce';
 
 const DashboardDefault = () => {
-  const [value, setValue] = useState("today");
-  const [slot, setSlot] = useState("week");
+  const [value, setValue] = useState('today');
+  const [slot, setSlot] = useState('week');
 
   return (
     <Grid container rowSpacing={1} columnSpacing={1}>
@@ -27,12 +27,7 @@ const DashboardDefault = () => {
         <Typography variant="h5">Dashboard</Typography>
       </Grid>
       <Grid item xs={12} sm={6} md={4} lg={3}>
-        <AnalyticEcommerce
-          title="Total Page Views"
-          count="4,42,236"
-          percentage={59.3}
-          extra="35,000"
-        />
+        <AnalyticEcommerce title="Total Page Views" count="4,42,236" percentage={59.3} extra="35,000" />
       </Grid>
     </Grid>
   );
