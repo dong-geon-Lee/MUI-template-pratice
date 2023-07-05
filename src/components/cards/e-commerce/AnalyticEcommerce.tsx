@@ -13,7 +13,7 @@ interface Props {
 
 const AnalyticEcommerce = ({ color = 'primary', title, count, percentage, isLoss, extra }: Props) => {
   return (
-    <MainCard sx={{ p: 2.25 }}>
+    <MainCard sx={{ p: 0 }}>
       <Stack spacing={0.5}>
         <Typography variant="h6" color="textSecondary">
           {title}
