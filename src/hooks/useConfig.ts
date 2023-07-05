@@ -1,2 +1,6 @@
 import { useContext } from 'react';
-// import {ConfiContext} from ''
+import { ConfigContext } from '../contexts/ConfigContext';
+
+const useConfig = () => useContext(ConfigContext);
+
+export default useConfig;

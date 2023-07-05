@@ -18,6 +18,7 @@ import {
 import AnalyticEcommerce from '../../components/cards/e-commerce/AnalyticEcommerce';
 import MainCard from '../../components/MainCard';
 import IncomeAreaChart from '../../sections/dashboard/default/IncomeAreaChart';
+import MonthlyBarChart from '../../sections/dashboard/default/MonthlyBarChart';
 
 const DashboardDefault = () => {
   const [value, setValue] = useState('today');
@@ -74,6 +75,25 @@ const DashboardDefault = () => {
           <Box sx={{ pt: 1, pr: 2 }}>
             <IncomeAreaChart slot={slot} />
           </Box>
+        </MainCard>
+      </Grid>
+      <Grid item xs={12} md={5} lg={4}>
+        <Grid container alignItems="center" justifyContent="space-between">
+          <Grid item>
+            <Typography variant="h5">Income Overview</Typography>
+          </Grid>
+          <Grid item />
+        </Grid>
+        <MainCard sx={{ mt: 2 }} content={false}>
+          <Box sx={{ p: 3, pb: 0 }}>
+            <Stack spacing={2}>
+              <Typography variant="h6" color="textSecondary">
+                This Week Statistics
+              </Typography>
+              <Typography variant="h3">$7,650</Typography>
+            </Stack>
+          </Box>
+          <MonthlyBarChart />
         </MainCard>
       </Grid>
     </Grid>
