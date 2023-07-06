@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Link as RouterLink } from 'react-router-dom';
-import { Box, Link, Stack, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@mui/material';
-// 패키지는 공식문서를 찾아보는게 중요하다! 똑같이 해서 안되면 사용법이 달라진 것이니 명심하자!ㄴ
+import { Box, Link, Stack, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography } from '@mui/material';
+// 패키지는 공식문서를 찾아보는게 중요하다! 똑같이 해서 안되면 사용법이 달라진 것이니 명심하자!
 import { NumericFormat } from 'react-number-format';
 import { ColorProps } from 'types/extended';
 import Dot from 'components/@extended/Dot';
@@ -170,8 +170,9 @@ const OrderStatus = ({ status }: Props) => {
   }
 
   return (
-    <Stack>
-      <Dot />
+    <Stack direction="row" spacing={1} alignItems="center">
+      <Dot color={color} />
+      <Typography>{title}</Typography>
     </Stack>
   );
 };
@@ -213,8 +214,9 @@ const OrdersTable = () => {
                   </TableCell>
                   <TableCell align="left">{row.name}</TableCell>
                   <TableCell align="right">{row.fat}</TableCell>
-                  <TableCell align="left">{/* OrderStatus */}</TableCell>
-
+                  <TableCell align="left">
+                    <OrderStatus status={row.carbs} />
+                  </TableCell>
                   <TableCell align="right">
                     <NumericFormat value={row.protein} displayType="text" thousandSeparator prefix="$" />
                   </TableCell>
