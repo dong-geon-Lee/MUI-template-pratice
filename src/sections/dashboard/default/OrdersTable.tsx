@@ -1,8 +1,10 @@
 import { useState } from 'react';
 import { Link as RouterLink } from 'react-router-dom';
-import { Box, Link, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@mui/material';
+import { Box, Link, Stack, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@mui/material';
 // 패키지는 공식문서를 찾아보는게 중요하다! 똑같이 해서 안되면 사용법이 달라진 것이니 명심하자!ㄴ
 import { NumericFormat } from 'react-number-format';
+import { ColorProps } from 'types/extended';
+import Dot from 'components/@extended/Dot';
 
 interface Data {
   name: string;
@@ -120,7 +122,7 @@ key는 더미 id align은 TableCell에 빌트인 된 속성이고 그 값을 map
 또한 useState와 order, orderBy를 이용해서 해당 컴포넌트와 리액트 상태를 삼항 연산자를 이용해서 
 테이블 UI를 변경시키고 있다는 것을 알 수 있다. 
 */
-function OrderTableHead({ order, orderBy }: OrderTableHeadProps) {
+const OrderTableHead = ({ order, orderBy }: OrderTableHeadProps) => {
   return (
     <TableHead>
       <TableRow>
@@ -137,7 +139,42 @@ function OrderTableHead({ order, orderBy }: OrderTableHeadProps) {
       </TableRow>
     </TableHead>
   );
+};
+
+interface Props {
+  status: number;
 }
+
+const OrderStatus = ({ status }: Props) => {
+  let color: ColorProps;
+  let title: string;
+
+  switch (status) {
+    case 0:
+      color = 'warning';
+      title = 'Pending';
+      break;
+    case 1:
+      color = 'success';
+      title = 'Approved';
+      break;
+
+    case 2:
+      color = 'error';
+      title = 'Rejected';
+      break;
+
+    default:
+      color = 'primary';
+      title = 'None';
+  }
+
+  return (
+    <Stack>
+      <Dot />
+    </Stack>
+  );
+};
 
 const OrdersTable = () => {
   const [order] = useState<Order>('asc');
