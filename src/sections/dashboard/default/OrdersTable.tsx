@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import { Link as RouterLink } from 'react-router-dom';
 import { Box, Link, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@mui/material';
+// 패키지는 공식문서를 찾아보는게 중요하다! 똑같이 해서 안되면 사용법이 달라진 것이니 명심하자!ㄴ
+import { NumericFormat } from 'react-number-format';
 
 interface Data {
   name: string;
@@ -175,7 +177,10 @@ const OrdersTable = () => {
                   <TableCell align="left">{row.name}</TableCell>
                   <TableCell align="right">{row.fat}</TableCell>
                   <TableCell align="left">{/* OrderStatus */}</TableCell>
-                  <TableCell align="right"></TableCell>
+
+                  <TableCell align="right">
+                    <NumericFormat value={row.protein} displayType="text" thousandSeparator prefix="$" />
+                  </TableCell>
                 </TableRow>
               );
             })}
