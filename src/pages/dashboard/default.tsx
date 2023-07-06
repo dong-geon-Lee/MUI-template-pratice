@@ -19,6 +19,7 @@ import AnalyticEcommerce from '../../components/cards/e-commerce/AnalyticEcommer
 import MainCard from '../../components/MainCard';
 import IncomeAreaChart from '../../sections/dashboard/default/IncomeAreaChart';
 import MonthlyBarChart from '../../sections/dashboard/default/MonthlyBarChart';
+import OrdersTable from '../../sections/dashboard/default/OrdersTable';
 
 const DashboardDefault = () => {
   const [value, setValue] = useState('today');
@@ -94,6 +95,18 @@ const DashboardDefault = () => {
             </Stack>
           </Box>
           <MonthlyBarChart />
+        </MainCard>
+      </Grid>
+
+      <Grid item xs={12} md={7} lg={8}>
+        <Grid container alignItems="center" justifyContent="space-between">
+          <Grid item>
+            <Typography variant="h5">Recenter Orders</Typography>
+          </Grid>
+          <Grid item />
+        </Grid>
+        <MainCard>
+          <OrdersTable />
         </MainCard>
       </Grid>
     </Grid>
