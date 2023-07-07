@@ -45,7 +45,6 @@ const DashboardDefault = () => {
 
       <Grid item md={8} sx={{ display: { sm: 'none', md: 'block', lg: 'none' } }} />
 
-      {/* row 2 */}
       <Grid item xs={12} md={7} lg={8}>
         <Grid container alignItems="center" justifyContent="space-between">
           <Grid item>
@@ -97,7 +96,6 @@ const DashboardDefault = () => {
           <MonthlyBarChart />
         </MainCard>
       </Grid>
-
       <Grid item xs={12} md={7} lg={8}>
         <Grid container alignItems="center" justifyContent="space-between">
           <Grid item>
