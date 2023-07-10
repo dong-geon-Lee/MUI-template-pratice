@@ -1,4 +1,4 @@
-import { Box, Checkbox, FormControl, FormControlLabel, FormGroup, Stack, Typography, useMediaQuery, useTheme } from '@mui/material';
+import { Box, Checkbox, FormControl, FormControlLabel, FormGroup, Stack, Typography, useTheme } from '@mui/material';
 
 import MainCard from 'components/MainCard';
 import useConfig from 'hooks/useConfig';
