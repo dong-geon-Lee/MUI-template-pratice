@@ -1,12 +1,22 @@
 import { forwardRef, CSSProperties, ReactNode, Ref } from 'react';
+
+// material-ui
 import { useTheme } from '@mui/material/styles';
 import { Card, CardContent, CardHeader, Divider, Typography, CardProps, CardHeaderProps, CardContentProps } from '@mui/material';
-import { KeyedObject } from '../types/root';
 
+// project import
+// import Highlighter from './third-party/Highlighter';
+
+// types
+import { KeyedObject } from 'types/root';
+
+// header style
 const headerSX = {
   p: 2.5,
   '& .MuiCardHeader-action': { m: '0px auto', alignSelf: 'center' }
 };
+
+// ==============================|| CUSTOM - MAIN CARD ||============================== //
 
 export interface MainCardProps extends KeyedObject {
   border?: boolean;
@@ -63,10 +73,10 @@ const MainCard = forwardRef(
           position: 'relative',
           border: border ? '1px solid' : 'none',
           borderRadius: 1,
-          borderColor: theme.palette.mode === 'dark' ? theme.palette.divider : theme.palette.grey.A700,
-          boxShadow: boxShadow && (!border || theme.palette.mode === 'dark') ? shadow : 'inherit',
+          borderColor: theme.palette.mode === 'dark' ? theme.palette.divider : theme.palette.grey[800],
+          boxShadow: boxShadow && (!border || theme.palette.mode === 'dark') ? shadow || theme.shadows[3] : 'inherit',
           ':hover': {
-            boxShadow: boxShadow ? shadow : 'inherit'
+            boxShadow: boxShadow ? shadow || theme.shadows[3] : 'inherit'
           },
           ...(codeHighlight && {
             '& pre': {
@@ -91,6 +101,7 @@ const MainCard = forwardRef(
           ...sx
         }}
       >
+        {/* card header and action */}
         {!darkTitle && title && (
           <CardHeader
             sx={headerSX}
@@ -101,13 +112,19 @@ const MainCard = forwardRef(
           />
         )}
         {darkTitle && title && <CardHeader sx={headerSX} title={<Typography variant="h4">{title}</Typography>} action={secondary} />}
+
+        {/* content & header divider */}
         {title && divider && <Divider />}
 
+        {/* card content */}
         {content && <CardContent sx={contentSX}>{children}</CardContent>}
         {!content && children}
+
+        {/* card footer - clipboard & highlighter  */}
         {codeString && (
           <>
             <Divider sx={{ borderStyle: 'dashed' }} />
+            {/* <Highlighter codeString={codeString} codeHighlight={codeHighlight} /> */}
           </>
         )}
       </Card>

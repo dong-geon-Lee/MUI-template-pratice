@@ -8,25 +8,6 @@ const App = () => {
       {/* 진행중 */}
       <DashboardDefault />
 
-      {/* 테스트 코드 */}
-      {/* <Box mt={4} display="flex" alignItems="center">
-        <Grid container item xs={8} justifyContent="space-between">
-          <Typography variant="h5" component="p">
-            Unique Visitor
-          </Typography>
-          <Stack direction="row" pr={1}>
-            <Button color="secondary">Month</Button>
-            <Button variant="outlined">Week</Button>
-          </Stack>
-        </Grid>
-        <Grid container item xs={4} pl={2}>
-          <Typography variant="h5" component="p">
-            Income Overview
-          </Typography>
-        </Grid>
-      </Box>
-      <Grid container></Grid> */}
-
       {/* 공식문서 코드 */}
     </div>
   );
@@ -126,3 +107,21 @@ export default App;
 //     </Stack>
 //   </Grid>
 // </Grid>
+
+/* <Box mt={4} display="flex" alignItems="center">
+      //   <Grid container item xs={8} justifyContent="space-between">
+      //     <Typography variant="h5" component="p">
+      //       Unique Visitor
+      //     </Typography>
+      //     <Stack direction="row" pr={1}>
+      //       <Button color="secondary">Month</Button>
+      //       <Button variant="outlined">Week</Button>
+      //     </Stack>
+      //   </Grid>
+      //   <Grid container item xs={4} pl={2}>
+      //     <Typography variant="h5" component="p">
+      //       Income Overview
+      //     </Typography>
+      //   </Grid>
+      // </Box>
+      // <Grid container></Grid> */
