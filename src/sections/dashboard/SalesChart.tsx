@@ -93,8 +93,8 @@ const SalesChart = () => {
   const primaryMain = theme.palette.primary.main;
   const successDark = theme.palette.success.dark;
 
-  // themes 폴더에 ThemeProvider 처리 해야된다. 아직은 상관없어보임
-  const xsDown = useMediaQuery(() => theme.breakpoints.down('sm'));
+  // * 콘솔 에러로 잠시 주석처리함. themes 폴더에 ThemeProvider 처리 해야된다. 아직은 상관없어보임
+  // const xsDown = useMediaQuery(() => theme.breakpoints.down('sm'));
 
   const handleLegendChange = (event: ChangeEvent<HTMLInputElement>) => {
     setLegend({ ...legend, [event.target.name]: event.target.checked });
@@ -149,11 +149,11 @@ const SalesChart = () => {
       },
       plotOptions: {
         bar: {
-          columnWidth: xsDown ? '60%' : '30%'
+          // columnWidth: xsDown ? '60%' : '30%'
         }
       }
     }));
-  }, [mode, primary, secondary, line, warning, primaryMain, successDark, income, cos, xsDown]);
+  }, [mode, primary, secondary, line, warning, primaryMain, successDark, income, cos]);
 
   return (
     <MainCard sx={{ mt: 1 }} content={false}>

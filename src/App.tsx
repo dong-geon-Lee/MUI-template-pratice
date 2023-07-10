@@ -1,15 +1,10 @@
-import React from 'react';
-import DashboardDefault from './pages/dashboard/default';
-import { Box, Button, Container, Grid, Stack, Typography } from '@mui/material';
+import Routes from 'routes';
 
 const App = () => {
   return (
-    <div>
-      {/* 진행중 */}
-      <DashboardDefault />
-
-      {/* 공식문서 코드 */}
-    </div>
+    <>
+      <Routes />
+    </>
   );
 };
 
