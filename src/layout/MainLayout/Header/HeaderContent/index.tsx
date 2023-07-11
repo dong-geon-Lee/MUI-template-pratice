@@ -5,6 +5,7 @@ import { useMemo } from 'react';
 
 import Search from './Search';
 import Notification from './Notification';
+import Localization from './Localization';
 
 const HeaderContent = () => {
   const { i18n, menuOrientation } = useConfig();
@@ -15,10 +16,16 @@ const HeaderContent = () => {
   // const localization = useMemo;
 
   return (
-    <>
+    <Box sx={{ display: 'flex', justifyContent: 'space-between', p: '1rem 2rem' }}>
+      <div></div>
+
       <Search />
-      <Notification />
-    </>
+
+      <Box sx={{ display: 'flex', gap: '0.4rem' }}>
+        <Localization />
+        <Notification />
+      </Box>
+    </Box>
   );
 };
 
