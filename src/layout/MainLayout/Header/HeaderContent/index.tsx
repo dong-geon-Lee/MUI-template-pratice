@@ -6,6 +6,7 @@ import { useMemo } from 'react';
 import Search from './Search';
 import Notification from './Notification';
 import Localization from './Localization';
+import MegaMenuSection from './MegaMenuSection';
 
 const HeaderContent = () => {
   const { i18n, menuOrientation } = useConfig();
@@ -22,6 +23,7 @@ const HeaderContent = () => {
       <Search />
 
       <Box sx={{ display: 'flex', gap: '0.4rem' }}>
+        <MegaMenuSection />
         <Localization />
         <Notification />
       </Box>
