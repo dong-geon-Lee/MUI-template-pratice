@@ -122,7 +122,7 @@ const MegaMenuSection = () => {
                               }
                               sx={{ mt: 2, '.css-10hburv-MuiTypography-root': { color: 'gray', fontWeight: '400', fontSize: '0.9rem' } }}
                             >
-                              <ListItemButton disableRipple sx={{ display: 'flex', justifyContent: 'center', mt: 2 }}>
+                              <ListItemButton disableRipple component={Link} target="_blank" to="/auth/login">
                                 <ListItemIcon sx={{ minWidth: '20px' }}>
                                   <Dot size={7} color="secondary" variant="outlined" sx={{}} />
                                 </ListItemIcon>

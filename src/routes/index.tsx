@@ -9,6 +9,7 @@ import TestList from 'pages/TestList';
 import TestBoxList from 'pages/TestBoxList';
 import TestCard from 'pages/TestCard';
 import TestPopper from 'pages/TestPopper';
+import TestMegaMenu from 'pages/TestMegaMenu';
 
 export default function ThemeRoutes() {
   return useRoutes([
@@ -20,7 +21,8 @@ export default function ThemeRoutes() {
           <TestTable />
           <TestList />
           <TestBoxList />
-          <TestPopper /> */}
+          <TestPopper />
+          <TestMegaMenu /> */}
         </Container>
       ),
       children: [{ path: '/', element: <></> }]
