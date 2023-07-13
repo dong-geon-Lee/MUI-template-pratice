@@ -8,6 +8,7 @@ import TestTable from 'pages/TestTable';
 import TestList from 'pages/TestList';
 import TestBoxList from 'pages/TestBoxList';
 import TestCard from 'pages/TestCard';
+import TestPopper from 'pages/TestPopper';
 
 export default function ThemeRoutes() {
   return useRoutes([
@@ -15,10 +16,11 @@ export default function ThemeRoutes() {
       path: '/',
       element: (
         <Container sx={{ display: 'block', padding: '2rem' }}>
-          <TestCard />
+          {/* <TestCard />
           <TestTable />
           <TestList />
           <TestBoxList />
+          <TestPopper /> */}
         </Container>
       ),
       children: [{ path: '/', element: <></> }]
