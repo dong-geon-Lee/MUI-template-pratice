@@ -17,8 +17,8 @@ export default function ThemeRoutes() {
       path: '/',
       element: (
         <Container sx={{ display: 'block', padding: '2rem' }}>
-          {/* <TestCard />
-          <TestTable />
+          <TestCard />
+          {/* <TestTable />
           <TestList />
           <TestBoxList />
           <TestPopper />
@@ -26,7 +26,7 @@ export default function ThemeRoutes() {
         </Container>
       ),
       children: [{ path: '/', element: <></> }]
-    },
-    MainRoutes
+    }
+    // MainRoutes
   ]);
 }
