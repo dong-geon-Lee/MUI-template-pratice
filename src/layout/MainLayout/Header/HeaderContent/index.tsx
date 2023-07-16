@@ -8,6 +8,7 @@ import Notification from './Notification';
 import Localization from './Localization';
 import MegaMenuSection from './MegaMenuSection';
 import Message from './Message';
+import Profile from './Profile';
 
 const HeaderContent = () => {
   const { i18n, menuOrientation } = useConfig();
@@ -28,6 +29,7 @@ const HeaderContent = () => {
         <Localization />
         <Notification />
         <Message />
+        <Profile />
       </Box>
     </Box>
   );

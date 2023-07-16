@@ -5,7 +5,7 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
-import { Box, Stack, Typography } from '@mui/material';
+import { Box, Grid, Stack, Typography } from '@mui/material';
 
 function createData(trackingNo: number, productName: string, totalOrder: number, status: string, totalAmount: number) {
   return { trackingNo, productName, totalOrder, status, totalAmount };
@@ -26,46 +26,37 @@ const rows = [
 
 const TestTable = () => {
   return (
-    <TableContainer component={Paper} sx={{ display: 'flex', flexDirection: 'column', m: '2rem auto', width: '90%' }}>
-      <Table sx={{ minWidth: 400 }}>
+    <TableContainer component={Paper} sx={{ mt: '2rem' }}>
+      <Table sx={{ minWidth: 650 }} aria-label="simple table">
         <TableHead sx={{ background: '#fafafa' }}>
-          <TableRow sx={{ '& .css-1ygcj2i-MuiTableCell-root': { color: '#2d2d2d' } }}>
-            <TableCell align="center">TRACKING NO.</TableCell>
-            <TableCell align="center">PRODUCT NAME</TableCell>
-            <TableCell align="center">TOTAL ORDER</TableCell>
-            <TableCell align="center">STATUS</TableCell>
-            <TableCell align="center">TOTAL AMOUNT</TableCell>
+          <TableRow>
+            <TableCell>TRACKING NO.</TableCell>
+            <TableCell>PRODUCT NAME</TableCell>
+            <TableCell>TOTAL ORDER</TableCell>
+            <TableCell>STATUS</TableCell>
+            <TableCell>TOTAL AMOUNT</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
           {rows.map((row) => (
-            <TableRow key={row.trackingNo} sx={{ '& .css-kys057-MuiTableCell-root.tracking__no': { color: '#d3d3d3' } }}>
-              <TableCell sx={{ minWidth: '200px' }} className="tracking__no" align="center">
-                {row.trackingNo}
-              </TableCell>
-              <TableCell sx={{ minWidth: '200px' }} align="center">
-                {row.productName}
-              </TableCell>
-              <TableCell sx={{ minWidth: '200px' }} align="center">
-                {row.totalOrder}
-              </TableCell>
-
-              <TableCell sx={{ minWidth: '200px' }} align="center">
-                <Stack direction="row" spacing={0.6} alignItems="center">
+            <TableRow>
+              <TableCell>{row.trackingNo}</TableCell>
+              <TableCell>{row.productName}</TableCell>
+              <TableCell>{row.totalOrder}</TableCell>
+              <TableCell>
+                <Grid container gap={1} alignItems="center">
                   <Box
                     sx={{
-                      background: `${row.status === 'Approved' ? 'green' : row.status === 'Pending' ? 'yellow' : 'red'}`,
-                      borderRadius: '50%',
+                      background: row.status === 'Approved' ? 'green' : row.status === 'Pending' ? 'yellow' : 'red',
                       width: '10px',
-                      height: '10px'
+                      height: '10px',
+                      borderRadius: '1rem'
                     }}
                   />
-                  <Typography>{row.status}</Typography>
-                </Stack>
+                  {row.status}
+                </Grid>
               </TableCell>
-              <TableCell sx={{ minWidth: '200px' }} align="center">
-                {row.totalAmount}
-              </TableCell>
+              <TableCell>$ {row.totalAmount}</TableCell>
             </TableRow>
           ))}
         </TableBody>

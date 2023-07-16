@@ -10,6 +10,8 @@ import TestBoxList from 'pages/TestBoxList';
 import TestCard from 'pages/TestCard';
 import TestPopper from 'pages/TestPopper';
 import TestMegaMenu from 'pages/TestMegaMenu';
+import TestAnalytics from 'pages/TestAnalytics';
+import TestReportAreaChart from 'pages/TestReportAreaChart';
 
 export default function ThemeRoutes() {
   return useRoutes([
@@ -17,7 +19,10 @@ export default function ThemeRoutes() {
       path: '/',
       element: (
         <Container sx={{ display: 'block', padding: '2rem' }}>
-          <TestCard />
+          {/* <TestCard />
+          <TestTable />
+          <TestAnalytics /> */}
+
           {/* <TestTable />
           <TestList />
           <TestBoxList />
@@ -26,7 +31,7 @@ export default function ThemeRoutes() {
         </Container>
       ),
       children: [{ path: '/', element: <></> }]
-    }
-    // MainRoutes
+    },
+    MainRoutes
   ]);
 }
