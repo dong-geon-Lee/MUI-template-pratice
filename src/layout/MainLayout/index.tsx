@@ -1,16 +1,74 @@
-import { Box } from '@mui/material';
+import { useEffect, useState } from 'react';
 import { Outlet } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+
+import { useTheme } from '@mui/material/styles';
+import { useMediaQuery, Box, Container, Toolbar } from '@mui/material';
+
+import Drawer from './Drawer';
 import Header from './Header';
 import Footer from './Footer';
+import HorizontalBar from './Drawer/HorizontalBar';
+
+import useConfig from 'hooks/useConfig';
+
+import { RootStateProps } from 'types/root';
+import { LAYOUT_CONST } from 'types/config';
+import { openDrawer } from 'store/reducers/menu';
 
 const MainLayout = () => {
+  const theme = useTheme();
+  const matchDownLG = useMediaQuery(theme.breakpoints.down('xl'));
+  const downLG = useMediaQuery(theme.breakpoints.down('lg'));
+
+  const { container, miniDrawer, menuOrientation } = useConfig();
+  const dispatch = useDispatch();
+
+  const isHorizontal = menuOrientation === LAYOUT_CONST.HORIZONTAL_LAYOUT && !downLG;
+
+  const menu = useSelector((state: any) => state.menu);
+  const { drawerOpen } = menu;
+
+  const [open, setOpen] = useState(!miniDrawer || drawerOpen);
+
+  const handleDrawerToggle = () => {
+    setOpen(!open);
+    dispatch(openDrawer({ drawerOpen: !open }));
+  };
+
+  useEffect(() => {
+    if (!miniDrawer) {
+      setOpen(!matchDownLG);
+      dispatch(openDrawer({ drawerOpen: !matchDownLG }));
+    }
+  }, [matchDownLG]);
+
+  useEffect(() => {
+    if (open !== drawerOpen) setOpen(drawerOpen);
+  }, [drawerOpen]);
+
   return (
     <Box>
-      {/* Header 시작하기, HeaderContent 먼저보기 */}
-      {/* 개발자 도구 보고 컴포넌트 구조 파악한게 도움이 됨 */}
-      <Header />
-      <Outlet />
-      <Footer />
+      {/* <Box sx={{ display: 'flex', width: '100%' }}> */}
+      <Header open={open} handleDrawerToggle={handleDrawerToggle} />
+      {!isHorizontal ? <Drawer open={open} handleDrawerToggle={handleDrawerToggle} /> : <HorizontalBar />}
+
+      <Box component="main" sx={{ width: 'calc(100% - 260px)', flexGrow: 1, p: { xs: 2, sm: 3 } }}>
+        <Toolbar sx={{ mt: isHorizontal ? 8 : 'inherit' }} />
+        <Container
+          maxWidth={container ? 'xl' : false}
+          sx={{
+            ...(container && { px: { xs: 0, sm: 2 } }),
+            position: 'relative',
+            minHeight: 'calc(100vh - 110px)',
+            display: 'flex',
+            flexDirection: 'column'
+          }}
+        >
+          <Outlet />
+          <Footer />
+        </Container>
+      </Box>
     </Box>
   );
 };
