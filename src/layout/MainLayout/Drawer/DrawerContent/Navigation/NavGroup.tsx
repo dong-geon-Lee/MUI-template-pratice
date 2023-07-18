@@ -18,11 +18,11 @@ import {
 } from '@mui/material';
 
 // third-party
-import { FormattedMessage } from 'react-intl';
+import { FormattedMessage, IntlProvider } from 'react-intl';
 
 // project import
-// import NavItem from './NavItem';
-// import NavCollapse from './NavCollapse';
+import NavItem from './NavItem';
+import NavCollapse from './NavCollapse';
 import Transitions from 'components/@extended/Transitions';
 
 import useConfig from 'hooks/useConfig';
@@ -114,6 +114,7 @@ const NavGroup = ({ item, lastItem, remItems, lastItemId, setSelectedItems, sele
       }
     });
   };
+
   const checkSelectedOnload = (data: NavItemType) => {
     const childrens = data.children ? data.children : [];
     childrens.forEach((itemCheck: NavItemType) => {
@@ -152,26 +153,26 @@ const NavGroup = ({ item, lastItem, remItems, lastItemId, setSelectedItems, sele
       }}
     />
   ) : null;
-
+  // * 왜 안될까?
   const navCollapse = item.children?.map((menuItem, index) => {
     switch (menuItem.type) {
       case 'collapse':
         return (
-          // <NavCollapse
-          //   key={menuItem.id}
-          //   menu={menuItem}
-          //   setSelectedItems={setSelectedItems}
-          //   setSelectedLevel={setSelectedLevel}
-          //   selectedLevel={selectedLevel}
-          //   selectedItems={selectedItems}
-          //   level={1}
-          //   parentId={currentItem.id!}
-          // />
-          <></>
+          <NavCollapse
+            key={menuItem.id}
+            menu={menuItem}
+            setSelectedItems={setSelectedItems}
+            setSelectedLevel={setSelectedLevel}
+            selectedLevel={selectedLevel}
+            selectedItems={selectedItems}
+            level={1}
+            parentId={currentItem.id!}
+          />
+          // <></>
         );
       case 'item':
-        // return <NavItem key={menuItem.id} item={menuItem} level={1} />;
-        return <></>;
+        return <NavItem key={menuItem.id} item={menuItem} level={1} />;
+      // return <></>;
       default:
         return (
           <Typography key={menuItem.id} variant="h6" color="error" align="center">
