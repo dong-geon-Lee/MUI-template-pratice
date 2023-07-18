@@ -38,6 +38,7 @@ const MainLayout = () => {
 
   // drawer toggler
   const [open, setOpen] = useState(!miniDrawer || drawerOpen);
+
   const handleDrawerToggle = () => {
     setOpen(!open);
     dispatch(openDrawer({ drawerOpen: !open }));
@@ -58,8 +59,7 @@ const MainLayout = () => {
   }, [drawerOpen]);
 
   return (
-    <Box>
-      {/* <Box sx={{ display: 'flex', width: '100%' }}> */}
+    <Box sx={{ display: 'flex', width: '100%' }}>
       <Header open={open} handleDrawerToggle={handleDrawerToggle} />
       {!isHorizontal ? <Drawer open={open} handleDrawerToggle={handleDrawerToggle} /> : <HorizontalBar />}
 

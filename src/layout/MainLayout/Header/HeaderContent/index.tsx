@@ -1,39 +1,52 @@
-import { Box, useMediaQuery } from '@mui/material';
-import { Theme } from '@mui/material/styles';
-import useConfig from 'hooks/useConfig';
 import { useMemo } from 'react';
 
+// material-ui
+import { Theme } from '@mui/material/styles';
+import { Box, useMediaQuery, useTheme } from '@mui/material';
+
+// project import
 import Search from './Search';
-import Notification from './Notification';
-import Localization from './Localization';
-import MegaMenuSection from './MegaMenuSection';
 import Message from './Message';
 import Profile from './Profile';
+import Localization from './Localization';
+import Notification from './Notification';
 import Customization from './Customization';
+// import MobileSection from './MobileSection';
+import MegaMenuSection from './MegaMenuSection';
+
+import useConfig from 'hooks/useConfig';
+// import DrawerHeader from 'layout/MainLayout/Drawer/DrawerHeader';
+
+// type
+import { LAYOUT_CONST } from 'types/config';
+import MobileSection from './MobileSection';
+
+// ==============================|| HEADER - CONTENT ||============================== //
 
 const HeaderContent = () => {
   const { i18n, menuOrientation } = useConfig();
+  const theme = useTheme();
+  const downLG = useMediaQuery(theme.breakpoints.down('lg'));
 
-  // 에러가 걸려서 주석처리함
-  // const downLG = useMediaQuery((theme: Theme) => theme?.breakpoints?.down('lg'));
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  const localization = useMemo(() => <Localization />, [i18n]);
 
-  // const localization = useMemo;
+  const megaMenu = useMemo(() => <MegaMenuSection />, []);
 
   return (
-    <Box sx={{ display: 'flex', justifyContent: 'space-between', p: '1rem 2rem' }}>
-      <div></div>
+    <>
+      {/* {menuOrientation === LAYOUT_CONST.HORIZONTAL_LAYOUT && !downLG && <DrawerHeader open={true} />} */}
+      {!downLG && <Search />}
+      {!downLG && megaMenu}
+      {!downLG && localization}
+      {downLG && <Box sx={{ width: '100%', ml: 1 }} />}
 
-      <Search />
-
-      <Box sx={{ display: 'flex', gap: '0.4rem' }}>
-        <MegaMenuSection />
-        <Localization />
-        <Notification />
-        <Message />
-        <Customization />
-        <Profile />
-      </Box>
-    </Box>
+      <Notification />
+      <Message />
+      <Customization />
+      {!downLG && <Profile />}
+      {downLG && <MobileSection />}
+    </>
   );
 };
 
