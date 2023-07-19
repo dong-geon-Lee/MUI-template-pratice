@@ -9,8 +9,8 @@ import ThemeLayout from './ThemeLayout';
 import ThemeMode from './ThemeMode';
 import ColorScheme from './ColorScheme';
 import ThemeWidth from './ThemeWidth';
-// import ThemeFont from './ThemeFont';
-// import ThemeMenuLayout from './ThemeMenuLayout';
+import ThemeFont from './ThemeFont';
+import ThemeMenuLayout from './ThemeMenuLayout';
 import MainCard from 'components/MainCard';
 import IconButton from 'components/@extended/IconButton';
 import AnimateButton from 'components/@extended/AnimateButton';
@@ -27,7 +27,6 @@ import {
   CloseCircleOutlined,
   FontColorsOutlined
 } from '@ant-design/icons';
-import ThemeMenuLayout from './ThemeMenuLayout';
 
 const Customization = () => {
   const theme = useTheme();
@@ -43,6 +42,8 @@ const Customization = () => {
   const themeColor = useMemo(() => <ColorScheme />, [presetColor]);
   // eslint-disable-next-line
   const themeWidth = useMemo(() => <ThemeWidth />, [container]);
+  // eslint-disable-next-line
+  const themeFont = useMemo(() => <ThemeFont />, [fontFamily]);
 
   const [open, setOpen] = useState(false);
 
@@ -212,6 +213,25 @@ const Customization = () => {
                     </Stack>
                   </AccordionSummary>
                   <AccordionDetails>{themeWidth}</AccordionDetails>
+                </Accordion>
+
+                <Accordion defaultExpanded sx={{ borderBottom: 'none' }}>
+                  <AccordionSummary>
+                    <Stack direction="row" spacing={1.5} alignItems="center">
+                      <IconButton disableRipple color="primary" sx={{ bgcolor: '#e6f7ff', borderRadius: '0.2rem' }} onClick={handleToggle}>
+                        <FontColorsOutlined />
+                      </IconButton>
+                      <Stack>
+                        <Typography variant="subtitle1" color="textPrimary">
+                          Font Family
+                        </Typography>
+                        <Typography variant="caption" color="textSecondary">
+                          Choose your font family.
+                        </Typography>
+                      </Stack>
+                    </Stack>
+                  </AccordionSummary>
+                  <AccordionDetails>{themeFont}</AccordionDetails>
                 </Accordion>
               </Box>
             </SimpleBar>
