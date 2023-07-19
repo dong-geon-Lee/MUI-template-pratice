@@ -6,7 +6,7 @@ import { Accordion, AccordionDetails, AccordionSummary, Box, Drawer, Stack, Typo
 
 // project import
 import ThemeLayout from './ThemeLayout';
-// import ThemeMode from './ThemeMode';
+import ThemeMode from './ThemeMode';
 // import ColorScheme from './ColorScheme';
 // import ThemeWidth from './ThemeWidth';
 // import ThemeFont from './ThemeFont';
@@ -35,6 +35,7 @@ const Customization = () => {
 
   const themeLayout = useMemo(() => <ThemeLayout />, [miniDrawer, themeDirection]);
   const themeMenuLayout = useMemo(() => <ThemeMenuLayout />, [menuOrientation]);
+  const themeMode = useMemo(() => <ThemeMode />, [mode]);
 
   const [open, setOpen] = useState(false);
 
@@ -114,7 +115,7 @@ const Customization = () => {
                 <Accordion defaultExpanded sx={{ borderTop: 'none' }}>
                   <AccordionSummary>
                     <Stack direction="row" spacing={1.5} alignItems="center">
-                      <IconButton disableRipple color="primary" sx={{ bgcolor: 'skyblue', borderRadius: '0.2rem' }} onClick={handleToggle}>
+                      <IconButton disableRipple color="primary" sx={{ bgcolor: '#e6f7ff', borderRadius: '0.2rem' }} onClick={handleToggle}>
                         <LayoutOutlined />
                       </IconButton>
                       <Stack>
@@ -133,8 +134,8 @@ const Customization = () => {
                 <Accordion defaultExpanded>
                   <AccordionSummary>
                     <Stack direction="row" spacing={1.25} alignItems="center">
-                      <IconButton disableRipple color="primary" sx={{ bgcolor: 'skyblue', borderRadius: '0.2rem' }} onClick={handleToggle}>
-                        <HighlightOutlined />
+                      <IconButton disableRipple color="primary" sx={{ bgcolor: '#e6f7ff', borderRadius: '0.2rem' }} onClick={handleToggle}>
+                        <BorderInnerOutlined />
                       </IconButton>
                       <Stack>
                         <Typography variant="subtitle1" color="textPrimary">
@@ -148,14 +149,24 @@ const Customization = () => {
                   </AccordionSummary>
                   <AccordionDetails>{themeMenuLayout}</AccordionDetails>
                 </Accordion>
+
                 <Accordion defaultExpanded>
                   <AccordionSummary>
-                    <Stack>
-                      <IconButton>
+                    <Stack direction="row" spacing={1.25} alignItems="center">
+                      <IconButton disableRipple color="primary" sx={{ bgcolor: '#e6f7ff', borderRadius: '0.2rem' }} onClick={handleToggle}>
                         <HighlightOutlined />
                       </IconButton>
+                      <Stack>
+                        <Typography variant="subtitle1" color="textPrimary">
+                          Theme Mode
+                        </Typography>
+                        <Typography variant="caption" color="textSecondary">
+                          Choose light or dark mode
+                        </Typography>
+                      </Stack>
                     </Stack>
                   </AccordionSummary>
+                  <AccordionDetails>{themeMode}</AccordionDetails>
                 </Accordion>
               </Box>
             </SimpleBar>
