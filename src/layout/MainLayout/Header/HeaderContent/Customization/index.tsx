@@ -7,7 +7,7 @@ import { Accordion, AccordionDetails, AccordionSummary, Box, Drawer, Stack, Typo
 // project import
 import ThemeLayout from './ThemeLayout';
 import ThemeMode from './ThemeMode';
-// import ColorScheme from './ColorScheme';
+import ColorScheme from './ColorScheme';
 // import ThemeWidth from './ThemeWidth';
 // import ThemeFont from './ThemeFont';
 // import ThemeMenuLayout from './ThemeMenuLayout';
@@ -36,6 +36,7 @@ const Customization = () => {
   const themeLayout = useMemo(() => <ThemeLayout />, [miniDrawer, themeDirection]);
   const themeMenuLayout = useMemo(() => <ThemeMenuLayout />, [menuOrientation]);
   const themeMode = useMemo(() => <ThemeMode />, [mode]);
+  const themeColor = useMemo(() => <ColorScheme />, [presetColor]);
 
   const [open, setOpen] = useState(false);
 
@@ -167,6 +168,25 @@ const Customization = () => {
                     </Stack>
                   </AccordionSummary>
                   <AccordionDetails>{themeMode}</AccordionDetails>
+                </Accordion>
+
+                <Accordion defaultExpanded>
+                  <AccordionSummary>
+                    <Stack direction="row" spacing={1.25} alignItems="center">
+                      <IconButton disableRipple color="primary" sx={{ bgcolor: '#e6f7ff', borderRadius: '0.2rem' }} onClick={handleToggle}>
+                        <BgColorsOutlined />
+                      </IconButton>
+                      <Stack>
+                        <Typography variant="subtitle1" color="textPrimary">
+                          Color Scheme
+                        </Typography>
+                        <Typography variant="caption" color="textSecondary">
+                          Choose your primary theme color
+                        </Typography>
+                      </Stack>
+                    </Stack>
+                  </AccordionSummary>
+                  <AccordionDetails>{themeColor}</AccordionDetails>
                 </Accordion>
               </Box>
             </SimpleBar>
