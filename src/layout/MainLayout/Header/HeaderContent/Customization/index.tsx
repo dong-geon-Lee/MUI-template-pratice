@@ -2,7 +2,20 @@ import { useMemo, useState } from 'react';
 
 // material-ui
 import { useTheme } from '@mui/material/styles';
-import { Accordion, AccordionDetails, AccordionSummary, Box, Drawer, IconButton, Stack, Typography } from '@mui/material';
+import { Accordion, AccordionDetails, AccordionSummary, Box, Drawer, Stack, Typography } from '@mui/material';
+
+// project import
+import ThemeLayout from './ThemeLayout';
+// import ThemeMode from './ThemeMode';
+// import ColorScheme from './ColorScheme';
+// import ThemeWidth from './ThemeWidth';
+// import ThemeFont from './ThemeFont';
+// import ThemeMenuLayout from './ThemeMenuLayout';
+import MainCard from 'components/MainCard';
+import IconButton from 'components/@extended/IconButton';
+import AnimateButton from 'components/@extended/AnimateButton';
+import SimpleBar from 'components/third-party/SimpleBar';
+import useConfig from 'hooks/useConfig';
 
 // assets
 import {
@@ -14,12 +27,6 @@ import {
   CloseCircleOutlined,
   FontColorsOutlined
 } from '@ant-design/icons';
-
-import useConfig from 'hooks/useConfig';
-import MainCard from 'components/MainCard';
-import AnimateButton from 'components/@extended/AnimateButton';
-import SimpleBar from 'components/third-party/SimpleBar';
-import ThemeLayout from './ThemeLayout';
 
 const Customization = () => {
   const theme = useTheme();
@@ -118,7 +125,7 @@ const Customization = () => {
                       </Stack>
                     </Stack>
                   </AccordionSummary>
-                  <AccordionDetails>{}</AccordionDetails>
+                  <AccordionDetails>{themeLayout}</AccordionDetails>
                 </Accordion>
 
                 <Accordion defaultExpanded>
