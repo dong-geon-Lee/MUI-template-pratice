@@ -20,6 +20,7 @@ import useConfig from 'hooks/useConfig';
 // type
 import { LAYOUT_CONST } from 'types/config';
 import MobileSection from './MobileSection';
+import DrawerHeader from 'layout/MainLayout/Drawer/DrawerHeader';
 
 // ==============================|| HEADER - CONTENT ||============================== //
 
@@ -35,7 +36,7 @@ const HeaderContent = () => {
 
   return (
     <>
-      {/* {menuOrientation === LAYOUT_CONST.HORIZONTAL_LAYOUT && !downLG && <DrawerHeader open={true} />} */}
+      {menuOrientation === LAYOUT_CONST.HORIZONTAL_LAYOUT && !downLG && <DrawerHeader open={true} />}
       {!downLG && <Search />}
       {!downLG && megaMenu}
       {!downLG && localization}
