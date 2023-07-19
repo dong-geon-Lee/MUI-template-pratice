@@ -27,12 +27,14 @@ import {
   CloseCircleOutlined,
   FontColorsOutlined
 } from '@ant-design/icons';
+import ThemeMenuLayout from './ThemeMenuLayout';
 
 const Customization = () => {
   const theme = useTheme();
   const { container, fontFamily, mode, presetColor, miniDrawer, themeDirection, menuOrientation } = useConfig();
 
   const themeLayout = useMemo(() => <ThemeLayout />, [miniDrawer, themeDirection]);
+  const themeMenuLayout = useMemo(() => <ThemeMenuLayout />, [menuOrientation]);
 
   const [open, setOpen] = useState(false);
 
@@ -136,15 +138,15 @@ const Customization = () => {
                       </IconButton>
                       <Stack>
                         <Typography variant="subtitle1" color="textPrimary">
-                          Theme Mode
+                          Menu Orientation
                         </Typography>
                         <Typography variant="caption" color="textSecondary">
-                          Choose light or dark mode
+                          Choose Vertical or Horizontal Menu Orientation
                         </Typography>
                       </Stack>
                     </Stack>
                   </AccordionSummary>
-                  <AccordionDetails>{}</AccordionDetails>
+                  <AccordionDetails>{themeMenuLayout}</AccordionDetails>
                 </Accordion>
                 <Accordion defaultExpanded>
                   <AccordionSummary>
