@@ -8,7 +8,7 @@ import { Accordion, AccordionDetails, AccordionSummary, Box, Drawer, Stack, Typo
 import ThemeLayout from './ThemeLayout';
 import ThemeMode from './ThemeMode';
 import ColorScheme from './ColorScheme';
-// import ThemeWidth from './ThemeWidth';
+import ThemeWidth from './ThemeWidth';
 // import ThemeFont from './ThemeFont';
 // import ThemeMenuLayout from './ThemeMenuLayout';
 import MainCard from 'components/MainCard';
@@ -33,10 +33,16 @@ const Customization = () => {
   const theme = useTheme();
   const { container, fontFamily, mode, presetColor, miniDrawer, themeDirection, menuOrientation } = useConfig();
 
+  // eslint-disable-next-line
   const themeLayout = useMemo(() => <ThemeLayout />, [miniDrawer, themeDirection]);
+  // eslint-disable-next-line
   const themeMenuLayout = useMemo(() => <ThemeMenuLayout />, [menuOrientation]);
+  // eslint-disable-next-line
   const themeMode = useMemo(() => <ThemeMode />, [mode]);
+  // eslint-disable-next-line
   const themeColor = useMemo(() => <ColorScheme />, [presetColor]);
+  // eslint-disable-next-line
+  const themeWidth = useMemo(() => <ThemeWidth />, [container]);
 
   const [open, setOpen] = useState(false);
 
@@ -187,6 +193,25 @@ const Customization = () => {
                     </Stack>
                   </AccordionSummary>
                   <AccordionDetails>{themeColor}</AccordionDetails>
+                </Accordion>
+
+                <Accordion defaultExpanded>
+                  <AccordionSummary>
+                    <Stack direction="row" spacing={1.25} alignItems="center">
+                      <IconButton disableRipple color="primary" sx={{ bgcolor: '#e6f7ff', borderRadius: '0.2rem' }} onClick={handleToggle}>
+                        <BgColorsOutlined />
+                      </IconButton>
+                      <Stack>
+                        <Typography variant="subtitle1" color="textPrimary">
+                          Layout Width
+                        </Typography>
+                        <Typography variant="caption" color="textSecondary">
+                          Choose fluid or container layout
+                        </Typography>
+                      </Stack>
+                    </Stack>
+                  </AccordionSummary>
+                  <AccordionDetails>{themeWidth}</AccordionDetails>
                 </Accordion>
               </Box>
             </SimpleBar>
