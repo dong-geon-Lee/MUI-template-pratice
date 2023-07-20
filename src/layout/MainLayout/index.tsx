@@ -2,11 +2,9 @@ import { useEffect, useState } from 'react';
 import { Outlet } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
-// material-ui
 import { useTheme } from '@mui/material/styles';
 import { useMediaQuery, Box, Container, Toolbar } from '@mui/material';
 
-// project import
 import Drawer from './Drawer';
 import Header from './Header';
 import Footer from './Footer';
@@ -17,11 +15,8 @@ import navigation from 'menu-items';
 import useConfig from 'hooks/useConfig';
 import { openDrawer } from 'store/reducers/menu';
 
-// types
 import { RootStateProps } from 'types/root';
 import { LAYOUT_CONST } from 'types/config';
-
-// ==============================|| MAIN LAYOUT ||============================== //
 
 const MainLayout = () => {
   const theme = useTheme();
@@ -36,7 +31,6 @@ const MainLayout = () => {
   const menu = useSelector((state: any) => state.menu);
   const { drawerOpen } = menu;
 
-  // drawer toggler
   const [open, setOpen] = useState(!miniDrawer || drawerOpen);
 
   const handleDrawerToggle = () => {
