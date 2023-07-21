@@ -43,10 +43,25 @@ const snackbar = createSlice({
       state.transition = transition || initialState.transition;
       state.close = close === false ? close : initialState.close;
       state.actionButton = actionButton || initialState.actionButton;
+    },
+    closeSnackbar(state) {
+      state.open = false;
+    },
+    handlerIncrease(state, action) {
+      const { maxStack } = action.payload;
+      state.maxStack = maxStack;
+    },
+    handlerDense(state, action) {
+      const { dense } = action.payload;
+      state.dense = dense;
+    },
+    handlerIconVariants(state, action) {
+      const { iconVariant } = action.payload;
+      state.iconVariant = iconVariant;
     }
   }
 });
 
 export default snackbar.reducer;
 
-export const { openSnackbar } = snackbar.actions;
+export const { openSnackbar, closeSnackbar, handlerIncrease, handlerDense, handlerIconVariants } = snackbar.actions;
